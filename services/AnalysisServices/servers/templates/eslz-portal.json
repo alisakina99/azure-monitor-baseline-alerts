@@ -94,10 +94,14 @@
         },
         "outputs": {
             "parameters": {
-               "alertName": "[steps('basics').resourceScope.location.name]"
+               "alertName": "dhisfdi",
+               "targetResourceId": "sdfwewr",
+               "targetResourceRegion": "KJEFDKJEWF",
+               "targetResourceType": "WRFEW"
             },
-            "kind": "Tenant",
-            "location": "[steps('basics').resourceScope.location.name]"
+            "kind": "ResourceGroup",
+            "location": "[steps('basics').resourceScope.location.name]",
+            "resourceGroupId": "dfbjkhdkjbdfsk"
         }
     }
 }
