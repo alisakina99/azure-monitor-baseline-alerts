@@ -15,6 +15,16 @@
           "bladeTitle": "ALZ - Baseline Alerts",
           "elements": [
             {
+              "name": "baselinealertsintro",
+              "type": "Microsoft.Common.InfoBox",
+              "visible": true,
+              "options": {
+                "text": "Azure Landing Zones will create ARM automation to deploy baseline alerts automatically as resources are deployed. Note that selecting Yes to the Option 'Deploy one or more Azure Monitor Baseline Alerts', will automatically import all policies and initiatives and will assign the Deploy Azure Monitor Baseline Alerts for Service Health policy initiative at the intermediate root.",
+                "uri": "https://aka.ms/amba/alz/docs",
+                "style": "Info"
+              }
+            },
+            {
               "name": "alertName",
               "type": "Microsoft.Common.TextBox",
               "label": "Alert Name",
