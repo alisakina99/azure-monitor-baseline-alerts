@@ -518,7 +518,7 @@
         "telemetryOptOut": "[steps('monitor').telemetryOptOut]"
       },
       "kind": "ResourceGroup",
-      "location": "[steps('basics').location]"
+      "location": "[steps('basics').resourceScope.location.name]"
     }
   }
 }
