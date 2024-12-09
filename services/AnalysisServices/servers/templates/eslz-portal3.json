@@ -6,6 +6,80 @@
       "title": "Azure landing zone accelerator",
       "steps": [
         {
+          "name": "basics",
+          "label": "Deployment settings",
+          "elements": [
+            {
+              "name": "cloudEnvironment",
+              "type": "Microsoft.Common.Section",
+              "label": "Select cloud environment",
+              "elements": [
+                {
+                  "name": "selection",
+                  "type": "Microsoft.Common.DropDown",
+                  "visible": true,
+                  "label": "Azure cloud environment",
+                  "defaultValue": "[if(contains(steps('basics').resourceScope.location.name, 'china'), 'Azure China Cloud', if(contains(steps('basics').resourceScope.location.name, 'usgov'), 'Azure US Government', if(contains(steps('basics').resourceScope.location.name, 'usdod'), 'Azure US Government', 'Azure Cloud')))]",
+                  "multiselect": false,
+                  "selectAll": false,
+                  "filter": false,
+                  "multiLine": true,
+                  "toolTip": "Select your target Azure cloud environment.",
+                  "constraints": {
+                    "allowedValues": [
+                      {
+                        "label": "Azure Cloud",
+                        "value": "AzureCloud"
+                      },
+                      {
+                        "label": "Azure China Cloud",
+                        "value": "AzureChinaCloud"
+                      },
+                      {
+                        "label": "Azure US Government",
+                        "value": "AzureUSGovernment"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "warning",
+                  "type": "Microsoft.Common.InfoBox",
+                  "visible": true,
+                  "options": {
+                    "icon": "Warning",
+                    "text": "This value should be automatically set based on the list of available locations. Only change this if you believe the value to be incorrect.",
+                    "uri": "https://docs.microsoft.com/en-us/cli/azure/manage-clouds-azure-cli"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "resourceScope",
+              "type": "Microsoft.Common.ResourceScope"
+            },
+            {
+              "name": "getSubscriptions",
+              "type": "Microsoft.Solutions.ArmApiControl",
+              "request": {
+                "method": "POST",
+                "path": "providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01",
+                "body": {
+                  "query": "ResourceContainers | where type =~ 'microsoft.resources/subscriptions' | where properties.state =~ 'enabled' | project label=tostring(name), description=subscriptionId, value=subscriptionId | order by label asc"
+                }
+              }
+            },
+            {
+              "name": "getLocations",
+              "type": "Microsoft.Solutions.ArmApiControl",
+              "request": {
+                "method": "GET",
+                "path": "locations?api-version=2019-11-01"
+              }
+            }
+          ]
+        },
+        {
           "name": "monitor",
           "label": "Baseline alerts and monitoring",
           "subLabel": {
