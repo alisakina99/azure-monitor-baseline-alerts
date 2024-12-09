@@ -402,7 +402,7 @@
       ]
     },
     "outputs": {
-      "resourceGroupId": "[steps('monitor').monitorAlertsResourceGroup]",
+      "resourceGroupId": "test",
       "parameters": {
         "alertName": "[steps('monitor').alertName]",
         "alertDescription": "[steps('monitor').alertDescription]",
