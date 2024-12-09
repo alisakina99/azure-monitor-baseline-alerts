@@ -42,6 +42,23 @@
               }
             },
             {
+              "name": "selector",
+              "type": "Microsoft.Common.DropDown",
+              "label": "Platform subscription",
+              "defaultValue": "[parse('[]')]",
+              "toolTip": "",
+              "multiselect": false,
+              "selectAll": false,
+              "filter": true,
+              "filterPlaceholder": "Filter subscriptions...",
+              "multiLine": true,
+              "visible": true,
+              "constraints": {
+                  "allowedValues": "[steps('basics').getSubscriptions.data]",
+                  "required": true
+              }
+          },
+            {
               "name": "getLocations",
               "type": "Microsoft.Solutions.ArmApiControl",
               "request": {
