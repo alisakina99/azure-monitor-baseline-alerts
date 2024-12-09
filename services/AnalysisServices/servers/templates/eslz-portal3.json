@@ -183,8 +183,8 @@
             "currentDateTimeUtcNow": "[monitor('currentDateTimeUtcNow')]",
             "telemetryOptOut": "[monitor('telemetryOptOut')]"
           },
-          "kind": "Tenant",
-          "location": "[steps('basics').resourceScope.location.name]"
+          "kind": "ResourceGroup",
+          "location": "swedencentral"
       }
   }
 }
