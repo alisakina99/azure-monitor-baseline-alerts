@@ -167,7 +167,7 @@
       ]
     },
     "outputs": {
-      "resourceGroupId": "[steps('monitor').AlertsResourceGroup]",
+      "resourceGroupId": "[steps('monitor').monitorAlertsResourceGroup]",
       "parameters": {
         "alertName": "[steps('monitor').alertName]",
         "alertDescription": "[steps('monitor').alertDescription]",
