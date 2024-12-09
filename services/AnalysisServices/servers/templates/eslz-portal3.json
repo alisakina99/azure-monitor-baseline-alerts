@@ -182,8 +182,8 @@
         "windowSize": "[steps('monitor').windowSize]",
         "evaluationFrequency": "[steps('monitor').evaluationFrequency]",
         "currentDateTimeUtcNow": "[steps('monitor').currentDateTimeUtcNow]",
-        "telemetryOptOut": "[steps('monitor').telemetryOptOut]",
-        "resourceGroupId": "test"
+        "telemetryOptOut": "[steps('monitor').telemetryOptOut]"
+
       },
       "kind": "ResourceGroup",
       "location": "swedencentral"
