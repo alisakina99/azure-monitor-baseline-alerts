@@ -12,15 +12,15 @@
             {
               "name": "cloudEnvironment",
               "type": "Microsoft.Common.Section",
-              "label": "Select cloud environment",
+              "label": "Set deployment parameters",
               "elements": [
                 {
-                  "name": "warning",
+                  "name": "information",
                   "type": "Microsoft.Common.InfoBox",
                   "visible": true,
                   "options": {
-                    "icon": "Warning",
-                    "text": "This value should be automatically set based on the list of available locations. Only change this if you believe the value to be incorrect.",
+                    "icon": "Information",
+                    "text": "Select the deployment parameters for your alert",
                     "uri": "https://docs.microsoft.com/en-us/cli/azure/manage-clouds-azure-cli"
                   }
                 }
@@ -28,7 +28,8 @@
             },
             {
               "name": "resourceScope",
-              "type": "Microsoft.Common.ResourceScope"
+              "type": "Microsoft.Common.ResourceScope",
+              "visible": false
             },
             {
               "name": "getSubscriptions",
@@ -39,7 +40,8 @@
                 "body": {
                   "query": "ResourceContainers | where type =~ 'microsoft.resources/subscriptions' | where properties.state =~ 'enabled' | project label=tostring(name), description=subscriptionId, value=subscriptionId | order by label asc"
                 }
-              }
+              },
+              "visible": false
             },
             {
               "name": "selector",
@@ -64,7 +66,8 @@
               "request": {
                 "method": "GET",
                 "path": "locations?api-version=2019-11-01"
-              }
+              },
+              "visible": false
             }
           ]
         },
