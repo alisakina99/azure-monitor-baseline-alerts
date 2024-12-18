@@ -17,6 +17,14 @@
               }
             },
             {
+              "name": "providersApi",
+              "type": "Microsoft.Solutions.ArmApiControl",
+              "request": {
+                "method": "GET",
+                "path": "[concat(subscription().id, '/providers/Microsoft.KeyVault/vaults?api-version=2022-07-01')]"
+              }
+            },
+            {
               "name": "alertName",
               "type": "Microsoft.Common.TextBox",
               "label": "Alert Name",
@@ -59,10 +67,10 @@
               "label": "Target Resource Id",
               "subLabel": "",
               "defaultValue": "",
-              "toolTip": "List of Azure resource Ids seperated by a comma. For example - /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroup/resource-group-name/Microsoft.compute/virtualMachines/vm-name",
+              "toolTip": "List of Azure resource Ids separated by a comma. For example - /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroup/resource-group-name/Microsoft.compute/virtualMachines/vm-name",
               "constraints": {
                 "required": true,
-                "regex": "",
+                "allowedValues": "[steps('basics').providersApi.data]",
                 "validationMessage": "",
                 "validations": [
                   {
@@ -88,7 +96,7 @@
                 "validations": []
               },
               "infoMessages": [],
-              "visible": true
+              "visible": false
             },
             {
               "name": "targetResourceType",
@@ -399,7 +407,7 @@
         "alertName": "[steps('basics').alertName]",
         "alertDescription": "[steps('basics').alertDescription]",
         "targetResourceId": "[steps('basics').targetResourceId]",
-        "targetResourceRegion": "[steps('basics').targetResourceRegion]",
+        "targetResourceRegion": "[steps('basics').resourceScope.location.name]",
         "targetResourceType": "[steps('basics').targetResourceType]",
         "isEnabled": "[steps('basics').isEnabled]",
         "alertSeverity": "[steps('basics').alertSeverity]",
