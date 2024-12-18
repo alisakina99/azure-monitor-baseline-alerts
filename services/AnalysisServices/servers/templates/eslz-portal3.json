@@ -74,6 +74,42 @@
               "infoMessages": [],
               "visible": true
             },
+             {
+              "name": "targetResourceId",
+              "type": "Microsoft.Common.DropDown",
+              "label": "Target Resource Id",
+              "subLabel": "",
+              "defaultValue": "",
+              "toolTip": "Select target Azure resource Ids",
+              "constraints": {
+                "required": true,
+                "allowedValues": [
+                  {
+                    "label": "Average",
+                    "value": "Average"
+                  },
+                  {
+                    "label": "Minimum",
+                    "value": "Minimum"
+                  },
+                  {
+                    "label": "Maximum",
+                    "value": "Maximum"
+                  },
+                  {
+                    "label": "Total",
+                    "value": "Total"
+                  },
+                  {
+                    "label": "Count",
+                    "value": "Count"
+                  }
+                ],
+                "validations": []
+              },
+              "infoMessages": [],
+              "visible": true
+            },
             {
               "name": "targetResourceRegion",
               "type": "Microsoft.Common.TextBox",
